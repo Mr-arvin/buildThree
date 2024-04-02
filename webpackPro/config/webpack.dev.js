@@ -4,9 +4,12 @@ const { merge } = require("webpack-merge");
 
 const devConfig = {
   mode: "development",
+  entry: {
+    main: "./src/main.ts",
+  },
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "..", "dist"),
+    path: path.join(__dirname, "./dist"),
   },
   devServer: {
     host: "localhost",

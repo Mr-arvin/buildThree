@@ -2,12 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 module.exports = {
-  entry: {
-    main: "./src/main.ts",
-  },
   devtool: "inline-source-map",
   devServer: {
-    static: "./dist",
+    // static: "./dist",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -17,7 +14,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, loader: "ts-loader", exclude: /nodu_modules/ },
       { test: /\.vue?$/, loader: "vue-loader" },
       {
         test: /\.css$/,
