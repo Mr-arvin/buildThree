@@ -1,0 +1,22 @@
+.mixin {
+  width: 100px;
+  height: 100px;
+  font-weight: bolder;
+  border: 10px solid gray;
+}
+
+@fontColor: black;
+@fontSize: 30px;
+
+.msg {
+  color: @fontColor;
+  font-size: @fontSize;
+  .mixin();
+}
+
+body {
+  background-color: #dde01f;
+  #root {
+    background-color: #27df19;
+  }
+}
