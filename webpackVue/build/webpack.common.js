@@ -8,13 +8,16 @@ const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   entry: {
-    main: "./src/index.js", // 设置入口文件为src目录下的index.js
+    main: "./src/index.ts", // 设置入口文件为src目录下的index.js
   },
   // output: {
   //   path: path.resolve(__dirname, "../dist"), // 设置输出路径为dist目录
   // },
   resolve: {
-    extensions: [".js", ".vue", ".json"],
+    alias: {
+      "@": path.resolve(__dirname, "../src"),
+    },
+    extensions: [".tsx", ".ts", ".js", ".vue", ".json"],
   },
   module: {
     rules: [
@@ -22,8 +25,14 @@ module.exports = {
       {
         test: /\.jsx?$/, // 使用正则表达式匹配以.js或.jsx为后缀的文件
         exclude: /node_modules/, // 排除node_modules目录下的文件
-        include: path.resolve(__dirname, "../dist"), // 只在src目录下进行loader编译
+        include: path.resolve(__dirname, "../src"), // 只在src目录下进行loader编译
         use: ["babel-loader"], // 使用babel-loader对符合条件的文件进行转译
+      },
+      {
+        test: /\.(tsx|ts)?$/, //
+        exclude: /node_modules/, // 排除node_modules目录下的文件
+        include: path.resolve(__dirname, "../src"), // 只在src目录下进行loader编译
+        use: ["ts-loader"], // ts-loader对符合条件的文件进行转译
       },
       {
         test: /\.(jpg|png|gif)$/,
