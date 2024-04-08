@@ -60,7 +60,7 @@ module.exports = merge(
             },
           },
         }),
-        // OptimizeCSSAssetsPlugin(),
+        new OptimizeCSSAssetsPlugin(), // 压缩css代码
       ],
     },
   },

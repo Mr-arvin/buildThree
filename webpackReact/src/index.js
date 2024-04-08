@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 class App extends Component {
   render() {
-    return <div>react frame content.....221232..</div>;
+    return <div>react frame content.....221232........</div>;
   }
 }
 

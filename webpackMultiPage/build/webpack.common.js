@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.jsx?$/, // 使用正则表达式匹配以.js或.jsx为后缀的文件
         exclude: /node_modules/, // 排除node_modules目录下的文件
-        include: path.resolve(__dirname, "../dist"), // 只在src目录下进行loader编译
+        include: path.resolve(__dirname, "../src"), // 只在src目录下进行loader编译
         use: ["babel-loader"], // 使用babel-loader对符合条件的文件进行转译
       },
       {

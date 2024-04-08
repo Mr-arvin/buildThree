@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,EACE,QAAS,CACT,SACF,CAEA,KACE,wBACF","file":"styles.5e30c4d4.css","sourceRoot":"../src","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-color: skyblue;\n}\n"]}

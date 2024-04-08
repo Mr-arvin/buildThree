@@ -2,6 +2,7 @@ const path = require("path"); // 导入Node.js的path模块，用于处理文件
 // const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // 导入HtmlWebpackPlugin模块，用于生成HTML文件
 const template = path.resolve(__dirname, "../public/index.html"); // 定义HTML模板文件的路径
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -16,7 +17,7 @@ module.exports = {
       {
         test: /\.jsx?$/, // 使用正则表达式匹配以.js或.jsx为后缀的文件
         exclude: /node_modules/, // 排除node_modules目录下的文件
-        include: path.resolve(__dirname, "../dist"), // 只在src目录下进行loader编译
+        include: path.resolve(__dirname, "../src"), // 只在src目录下进行loader编译
         use: ["babel-loader"], // 使用babel-loader对符合条件的文件进行转译
       },
       {
@@ -42,7 +43,15 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template, // 设置HTML模板文件的路径
+      title: "webpack single page",
+      chunks: ["vender", "main"],
       filename: "index.html", // 生成的HTML文件名称
+    }),
+    new WorkboxPlugin.GenerateSW({
+      // 这些选项帮助 ServiceWorkers 快速启用
+      // 不允许遗留任何“旧的” ServiceWorkers
+      clientsClaim: true,
+      skipWaiting: true,
     }),
   ],
   optimization: {
